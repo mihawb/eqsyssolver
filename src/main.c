@@ -27,8 +27,13 @@ int main(int argc, char ** argv) {
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
 		res = backsubst(x,A,b);
-
-		printToScreen(x);
+		if(res == 1)
+			printf("Macierz osobliwa. Wyznacznik równy 0\n");	
+		
+		else if(res == 2)
+			printf("Błąd! Złe wymiary macierzy\n");
+		else	
+			printToScreen(x);
 	    freeMatrix(x);
 	} else {
 		fprintf(stderr,"Błąd! Nie mogłem utworzyć wektora wynikowego x.\n");
