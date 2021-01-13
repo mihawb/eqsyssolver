@@ -17,11 +17,12 @@ int main(int argc, char ** argv) {
 	printToScreen(b);
 
 	res = eliminate(A,b);
-    /* debug przestawiania wierszy w eliminacji gaussa */
-        printf("debug przestawiania wierszy w eliminacji gaussa\n");
+    
+        printf("debug eliminacji gaussa\n"); // w finalnej wersji usunac / wykomentowac
         printToScreen(A);
         printToScreen(b);
-    /* koniec debugu przestawiania wierszy w eliminacji gaussa */
+        printf("koniec debugu eliminacji gaussa\n");
+    
     
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
