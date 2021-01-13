@@ -13,7 +13,7 @@ int  backsubst(Matrix *x, Matrix *mat, Matrix *b) {
 
 				int i;
 				for (i =0; i < x->r; i++) {
-								x->data[i][0] = b->data[i][0];
+					x->data[i][0] = b->data[i][0];
 				}
 
 				return 0;

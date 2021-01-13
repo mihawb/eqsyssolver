@@ -17,14 +17,20 @@ int main(int argc, char ** argv) {
 	printToScreen(b);
 
 	res = eliminate(A,b);
+    /* debug przestawiania wierszy w eliminacji gaussa */
+        printf("debug przestawiania wierszy w eliminacji gaussa\n");
+        printToScreen(A);
+        printToScreen(b);
+    /* koniec debugu przestawiania wierszy w eliminacji gaussa */
+    
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
 		res = backsubst(x,A,b);
 
 		printToScreen(x);
-	  freeMatrix(x);
+	    freeMatrix(x);
 	} else {
-					fprintf(stderr,"Błąd! Nie mogłem utworzyć wektora wynikowego x.\n");
+		fprintf(stderr,"Błąd! Nie mogłem utworzyć wektora wynikowego x.\n");
 	}
 
 	freeMatrix(A);

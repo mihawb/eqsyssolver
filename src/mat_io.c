@@ -20,12 +20,12 @@ Matrix * readFromFile(char * fname) {
 							for (ic = 0; ic < c; ic++)
 								fscanf(fin, "%lf",&(mat->data[ir][ic]));
 					} else {
-								fprintf(stderr,"Wystąpił problem podczas tworzenia macierzy o rozmiarach %d x %d dla danych z pliku: %s\n", r, c, fname);
+						fprintf(stderr,"Wystąpił problem podczas tworzenia macierzy o rozmiarach %d x %d dla danych z pliku: %s\n", r, c, fname);
 					}
 
 					fclose(fin);
 				} else {
-								fprintf(stderr,"Nie mogę otworzyć pliku o nazwie: %s\n", fname);
+					fprintf(stderr,"Nie mogę otworzyć pliku o nazwie: %s\n", fname);
 				}
 
 				return mat;
@@ -52,7 +52,7 @@ Matrix * createMatrix(int r, int c) {
 			mat->c = c;
 			mat->data = (double**) malloc(sizeof(double*) * r);
 			for (i=0; i < r; i++) {
-					mat->data[i] = (double*) malloc(sizeof(double) * c);
+				mat->data[i] = (double*) malloc(sizeof(double) * c);
 			}
 		}
 
