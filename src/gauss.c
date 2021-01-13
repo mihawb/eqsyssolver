@@ -17,8 +17,9 @@ void rowOrderModifier(Matrix * m, int x, int y) {
  * Zwraca 1 - macierz osobliwa - dzielenie przez 0
  */
 int eliminate(Matrix *mat, Matrix *b){
-    int ir, ic;
-    int i;              
+    int ir, jr, jc;
+    int i;
+    double constInR;              
     double rMaxElem;    // do poszukiwania elementu glownego
     int rMaxIndex;      // i numeru wiersza w ktorym sie znajduje
 
@@ -34,8 +35,15 @@ int eliminate(Matrix *mat, Matrix *b){
             rowOrderModifier(mat, ir, rMaxIndex);
             rowOrderModifier(b, ir, rMaxIndex);
         }
-    }
 
+        for (jr = ir + 1; jr < mat->r; jr++) {                      // dla wszystkich wierszy pod diagonala (pod w. aktualnie okreslonym przez ir)
+            constInR = mat->data[jr][ir] / mat->data[ir][ir];       // o ta stala trzeba przemnozyc kazdy element w wierszu wiec dla jasnosci dalej uzywa sie zmiennej
+            for (jc = ir; jc < mat->c; jc++)                        // dla wszystkich elementow wiersza za diagonala
+                mat->data[jr][jc] -= constInR * mat->data[ir][jc];
+            b->data[jr][0] -= constInR * b->data[ir][0];
+        }
+    }
+    
 	return 0;
 }
 
