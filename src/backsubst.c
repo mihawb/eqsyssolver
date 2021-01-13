@@ -6,13 +6,16 @@
  */
 int backsubst(Matrix *x, Matrix *mat, Matrix *b) 
 {
-	/*Sprawdzenie rozmiarów macierzy*/
-	if(x->r != mat->r)
-		return 2;
-
 
 	int k,w;
 	double sum;
+
+	/*Sprawdzenie rozmiarów macierzy*/
+	if(x->r != mat->r)
+		return 2;
+	if(x->c != 1)
+		return 2;
+
 	for(w = mat->r-1;w>=0;w--)
 	{
 		sum = 0;	
@@ -25,6 +28,7 @@ int backsubst(Matrix *x, Matrix *mat, Matrix *b)
 		x->data[w][0] = (b->data[w][0] - sum) / mat->data[w][w];
 		
 	}
+
 	return 0;
 }
 
