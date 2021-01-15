@@ -1,4 +1,5 @@
 #include "gauss.h"
+#include <stdio.h>
 
 int abs(int x) {
     if (x < 0)
@@ -23,6 +24,11 @@ int eliminate(Matrix *mat, Matrix *b){
     double rMaxElem;    // do poszukiwania elementu glownego
     int rMaxIndex;      // i numeru wiersza w ktorym sie znajduje
 
+    if (mat->data[0][0] == 0) { // sprawdzenie elementu 1x1
+        return 1;
+    } else if (mat->r != mat->c) // sprawdzenie rozmiarow macierzy
+        return 1;
+
     for (ir = 0; ir < mat->r; ir++) {
         rMaxElem = abs(mat->data[ir][ir]);          // [ir][ir] bo to element diagonalny w danym wierszu
         for (i = ir; i < mat->r; i++) {             // poszukiwanie elementu glownego w kolumnie
@@ -43,7 +49,7 @@ int eliminate(Matrix *mat, Matrix *b){
             b->data[jr][0] -= constInR * b->data[ir][0];
         }
     }
-    
+
 	return 0;
 }
 

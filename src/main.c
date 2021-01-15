@@ -17,11 +17,15 @@ int main(int argc, char ** argv) {
 	printToScreen(b);
 
 	res = eliminate(A,b);
+
+    if (res != 0) {
+        fprintf(stderr, "Element o indeksach 1x1 rowny 0 lub niewlasciwe rozmiary macierzy\n");
+    }
     
-        printf("debug eliminacji gaussa\n"); // w finalnej wersji usunac / wykomentowac
-        printToScreen(A);
-        printToScreen(b);
-        printf("koniec debugu eliminacji gaussa\n");
+    printf("debug eliminacji gaussa\n"); // w finalnej wersji usunac / wykomentowac
+    printToScreen(A);
+    printToScreen(b);
+    printf("koniec debugu eliminacji gaussa\n");
     
     
 	x = createMatrix(b->r, 1);
