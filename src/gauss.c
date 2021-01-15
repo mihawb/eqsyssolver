@@ -16,6 +16,7 @@ void rowOrderModifier(Matrix * m, int x, int y) {
  * Zwraca 0 - elimnacja zakonczona sukcesem
  * Zwraca 1 - macierz osobliwa - dzielenie przez 0
  */
+
 int eliminate(Matrix *mat, Matrix *b){
     int ir, jr, jc;
     int i;
@@ -51,4 +52,3 @@ int eliminate(Matrix *mat, Matrix *b){
 
 	return 0;
 }
-
