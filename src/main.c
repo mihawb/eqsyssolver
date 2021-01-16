@@ -35,7 +35,8 @@ int main(int argc, char ** argv) {                            // gdy uzywa sie p
 		else	
 			printToScreen(x);
 
-		check(argv[3], x);      //do sprawdzania
+		if (argc > 3)
+			check(argv[3], x);      //do sprawdzania
 
 	    freeMatrix(x);
 	} else {
