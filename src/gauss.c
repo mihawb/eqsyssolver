@@ -1,10 +1,5 @@
 #include "gauss.h"
-
-int abs(int x) {
-    if (x < 0)
-        return -x;
-    return x;
-}
+#include <math.h>
 
 void rowOrderModifier(Matrix * m, int x, int y) {
     double *tmp = m->data[x];
@@ -24,20 +19,15 @@ int eliminate(Matrix *mat, Matrix *b){
     double rMaxElem;    // do poszukiwania elementu glownego
     int rMaxIndex;      // i numeru wiersza w ktorym sie znajduje
 
-    if (mat->data[0][0] == 0) { // sprawdzenie elementu 1x1
-        return 1;
-    } else if (mat->r != mat->c) // sprawdzenie rozmiarow macierzy
-        return 1;
-
     for (ir = 0; ir < mat->r; ir++) {
-        rMaxElem = abs(mat->data[ir][ir]);          // [ir][ir] bo to element diagonalny w danym wierszu
+        rMaxElem = fabs(mat->data[ir][ir]);          // [ir][ir] bo to element diagonalny w danym wierszu
         for (i = ir; i < mat->r; i++) {             // poszukiwanie elementu glownego w kolumnie
-            if (abs(mat->data[i][ir]) > rMaxElem) {
+            if (fabs(mat->data[i][ir]) > rMaxElem) {
                 rMaxElem = mat->data[i][ir];
                 rMaxIndex = i;
             }
         }
-        if (rMaxElem > abs(mat->data[ir][ir])) {    // jesli element glowny nie znajduje sie w ir, zamien wiersze 
+        if (rMaxElem > fabs(mat->data[ir][ir])) {    // jesli element glowny nie znajduje sie w ir, zamien wiersze 
             rowOrderModifier(mat, ir, rMaxIndex);
             rowOrderModifier(b, ir, rMaxIndex);
         }

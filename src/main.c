@@ -1,11 +1,12 @@
 #include "gauss.h"
 #include "backsubst.h"
 #include "mat_io.h"
+#include "test.h"
 #include <stdlib.h>
 #include <stdio.h>
 
 
-int main(int argc, char ** argv) {                            // gdy uzywa sie programu test nalezy jako 3 argument podać plik z poprawnymi wynikami
+int main(int argc, char ** argv) {  // gdy uzywa sie programu test nalezy jako 3 argument podać plik z poprawnymi wynikami
 	int res;
 	Matrix * A = readFromFile(argc > 1 ? argv[1] : "A");
 	Matrix * b = readFromFile(argc > 2 ? argv[2] : "b");
@@ -22,11 +23,11 @@ int main(int argc, char ** argv) {                            // gdy uzywa sie p
         fprintf(stderr, "Element o indeksach 1x1 rowny 0 lub niewlasciwe rozmiary macierzy\n");
     }
     
-    printf("debug eliminacji gaussa\n"); // w finalnej wersji usunac / wykomentowac
+    /*
+    printf("debug eliminacji gaussa\n");
     printToScreen(A);
     printToScreen(b);
-    printf("koniec debugu eliminacji gaussa\n");
-    
+     */
     
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
@@ -40,7 +41,7 @@ int main(int argc, char ** argv) {                            // gdy uzywa sie p
 			printToScreen(x);
 
 		if (argc > 3)
-			check(argv[3], x);      //do sprawdzania
+			check(argv[3], x);  //do sprawdzania
 
 	    freeMatrix(x);
 	} else {

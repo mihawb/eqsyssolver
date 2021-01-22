@@ -1,5 +1,6 @@
 #include "mat_io.h"
-#include "test_1.h"
+#include "test.h"
+#include <stdio.h>
 #include <math.h>
 
 double my_round(double x, unsigned int digits) {
@@ -24,11 +25,11 @@ void check(char* solution, Matrix* x) {
 			x_r = my_round(x->data[i][j], 5);
 
 			if (sol_r != x_r) {
-				printf("Zly wynik");
-				return 1;
+				printf("Zly wynik\n");
+				return;
 			}
 		}
 	}
 
-	printf("Dobry wynik");
+	printf("Dobry wynik\n");
 }
