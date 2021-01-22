@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 
-int main(int argc, char ** argv) {
+int main(int argc, char ** argv) {                            // gdy uzywa sie programu test nalezy jako 3 argument podać plik z poprawnymi wynikami
 	int res;
 	Matrix * A = readFromFile(argc > 1 ? argv[1] : "A");
 	Matrix * b = readFromFile(argc > 2 ? argv[2] : "b");
@@ -38,6 +38,10 @@ int main(int argc, char ** argv) {
 			printf("Błąd! Złe wymiary macierzy\n");
 		else	
 			printToScreen(x);
+
+		if (argc > 3)
+			check(argv[3], x);      //do sprawdzania
+
 	    freeMatrix(x);
 	} else {
 		fprintf(stderr,"Błąd! Nie mogłem utworzyć wektora wynikowego x.\n");
